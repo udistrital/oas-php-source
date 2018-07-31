@@ -1,0 +1,15 @@
+pipeline:
+  get_s2i:
+    image: centos
+    commands:
+      - curl --output s2i.tgz --silent --show-error --location https://github.com/openshift/source-to-image/releases/download/v1.1.10/source-to-image-v1.1.10-27f0729d-linux-amd64.tar.gz
+      - tar xzf s2i.tgz
+
+  execute_s2i:
+    image: docker
+    commands:
+      - ./s2i build . oas0/oas-php-image:5.6 oas0/oas-php-app:${DRONE_COMMIT:0:7}
+      - echo ${DOCKER_USERNAME} | docker login --username ${DOCKER_USERNAME} --password-stdin
+      - docker push oas0/oas-php-app:${DRONE_COMMIT:0:7}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
