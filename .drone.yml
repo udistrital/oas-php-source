@@ -10,9 +10,8 @@ pipeline:
     image: docker
     commands:
       - set +x
-      - env
       - ./s2i build . oas0/oas-php-image:5.6 oas0/oas-php-app:${DRONE_COMMIT:0:7}
-      - echo ${DOCKER_USERNAME} | docker login --username ${DOCKER_USERNAME} --password-stdin
+      - docker login --username $DOCKER_USERNAME --password-stdin <<< "$DOCKER_PASSWORD"
       - docker push oas0/oas-php-app:${DRONE_COMMIT:0:7}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
