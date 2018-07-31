@@ -10,7 +10,7 @@ pipeline:
     commands:
       - set +x
       - ./s2i build . oas0/oas-php-image:5.6 oas0/oas-php-app:${DRONE_COMMIT:0:7}
-      - echo $${DOCKER_USERNAME} | docker login --username $${DOCKER_USERNAME} --password-stdin
+      - echo ${DOCKER_USERNAME} | docker login --username ${DOCKER_USERNAME} --password-stdin
       - docker push oas0/oas-php-app:${DRONE_COMMIT:0:7}
     secrets:
       - docker_username
