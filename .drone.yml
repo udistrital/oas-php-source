@@ -1,7 +1,7 @@
 pipeline:
   step:
     image: oasplugins/s2i
-    destimg: oas0/oas-php-source
+    destimg: oas0/oas-php-source:${DRONE_COMMIT:0:7}
     secrets:
       - docker_username
       - docker_password
