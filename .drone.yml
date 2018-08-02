@@ -1,6 +1,5 @@
 pipeline:
   step:
-    pull: true
     image: oasplugins/s2i
     destimg: oas0/oas-php-source:${DRONE_COMMIT:0:7}
     secrets:
