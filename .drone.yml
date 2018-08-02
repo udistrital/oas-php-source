@@ -9,6 +9,7 @@ pipeline:
             php -l $php_file || rc=1
           done
           exit $rc
+  # TODO: test
   publish:
     image: oasplugins/s2i
     destimg: oas0/oas-php-source:${DRONE_COMMIT:0:7}

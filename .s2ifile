@@ -1,5 +1,8 @@
 {
   "source": "src",
   "builderImage": "oas0/oas-php-image:5.6",
-  "tag": "oas-php-source"
+  "tag": "oas-php-source",
+  "flags": {
+    "use-config": "true"
+  }
 }
