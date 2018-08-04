@@ -7,6 +7,6 @@
   $db = mysqli_connect($mysql_server, $mysql_user, $mysql_password, $mysql_db, $mysql_port);
   $starttime = microtime(true);
   mysqli_query($db, "/* " . MYSQLND_QC_ENABLE_SWITCH . " */ SELECT SLEEP(1) AS ZERO FROM DUAL;");
-  $endtime = microtime(true);
-  printf("Seconds: %d", $endtime - $starttime);
+  $seconds = microtime(true) - $starttime;
+  echo "Seconds: " . $seconds;
   mysqli_close($db);
