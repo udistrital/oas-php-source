@@ -1,5 +1,5 @@
 <pre>
   <?
-    include "fread.php";
     include "session.php";
+    include "fread.php";
     include "sql.php";
